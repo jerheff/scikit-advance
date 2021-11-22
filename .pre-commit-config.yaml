@@ -1,0 +1,15 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 38b88246ccc552bffaaf54259d064beeee434539  # frozen: v4.0.1
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+    -   id: check-docstring-first
+    -   id: check-merge-conflict
+    -   id: check-added-large-files
+-   repo: https://github.com/psf/black
+    rev: 19f6aa8208154de4560ee1e4a3e638e120dcdba5  # frozen: 21.11b1
+    hooks:
+    -   id: black
+        files: skadvance

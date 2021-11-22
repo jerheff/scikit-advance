@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "scikit-advance"
+version = "0.0.0"
+description = "Components to advanced your use of scikit-learn"
+authors = ["Jeremy Heffner"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/jerheff/scikit-advance"
+keywords = ['scikit-learn', 'data science', 'machine learning']
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Natural Language :: English",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+packages = [
+    {include = "skadvance"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+scikit-learn = "^1.0.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+pytest-cov = "^3.0.0"
+pytest-xdist = "^2.4.0"
+
+[tool.black]
+required-version = '21.9b0'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
