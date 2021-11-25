@@ -1,6 +1,10 @@
 .PHONY: install develop test precommit autoupdate clean black build pypi
 
 env:
+ifeq (, $(shell which pipx))
+	python3 -m pip install --user pipx
+	python3 -m pipx ensurepath
+endif
 ifeq (, $(shell which pre-commit))
 	pipx install pre-commit
 endif
@@ -13,10 +17,10 @@ ifeq (, $(shell which black))
 endif
 
 install: env
-	poetry install --no-dev
+	PIP_USER=false poetry install --no-dev
 
 develop: env
-	poetry install
+	PIP_USER=false poetry install
 
 test:
 	poetry run pytest --disable-warnings --cov=skadvance
@@ -38,9 +42,3 @@ clean:
 
 build: clean
 	poetry build
-
-test-publish: build
-	twine upload -r testpypi dist/*
-
-publish: build
-	twine upload dist/*
