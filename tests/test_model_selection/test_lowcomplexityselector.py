@@ -1,18 +1,23 @@
 import pytest
 import numpy as np
 from sklearn.datasets import make_classification
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import RandomizedSearchCV
 from sklearn.tree import DecisionTreeClassifier
 
 
-from skadvance.model_selection import LowComplexitySelector, SingleColumnComplexity
+from skadvance.model_selection import (
+    LowComplexitySelector,
+    SingleColumnComplexity,
+)
+
+from skadvance.distributions import uniform
 
 
 def test_lowcomplexityselector():
 
     X, y = make_classification(n_samples=1000, random_state=42)
 
-    hps = {"min_samples_split": [0.25, 0.5, 0.6, 0.7, 0.8, 0.9]}
+    hps = {"min_samples_split": uniform(0, 1)}
     complexity_hp = "min_samples_split"
 
     selected_hp_values = []
@@ -23,11 +28,13 @@ def test_lowcomplexityselector():
         print(f"Complexity fn: {complexity}")
         selector = LowComplexitySelector(complexity)
 
-        gs = GridSearchCV(
+        gs = RandomizedSearchCV(
             DecisionTreeClassifier(random_state=42),
-            param_grid=hps,
+            param_distributions=hps,
+            n_iter=10,
             scoring="roc_auc",
             refit=selector,
+            random_state=42,
         )
 
         gs.fit(X, y)

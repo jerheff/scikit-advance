@@ -23,7 +23,7 @@ develop: env
 	PIP_USER=false poetry install
 
 test:
-	poetry run pytest --disable-warnings --cov=skadvance
+	poetry run pytest --cov=skadvance --cov-report=term-missing:skip-covered --cov-report=xml:coverage.xml
 
 black:
 	black .
