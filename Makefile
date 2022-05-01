@@ -16,11 +16,18 @@ ifeq (, $(shell which black))
 	pipx install black
 endif
 
-install: env
-	PIP_USER=false poetry install --no-dev
+venv:
+	pyenv local 3.9.12
+	poetry env use $(shell pyenv which python)
 
-develop: env
-	PIP_USER=false poetry install
+install: env venv
+	PIP_USER=false poetry install --remove-untracked --no-dev
+
+develop: env venv
+	PIP_USER=false poetry install --remove-untracked
+
+lock:
+	poetry lock --no-update
 
 test:
 	poetry run pytest --cov=skadvance --cov-report=term-missing:skip-covered --cov-report=xml:coverage.xml

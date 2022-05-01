@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "scikit-advance"
 version = "0.0.0"
-description = "Components to advanced your use of scikit-learn"
+description = "Components to advance your use of scikit-learn"
 authors = ["Jeremy Heffner"]
 license = "MIT"
 readme = "README.md"
@@ -19,16 +19,17 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = ">3.7,<3.11"
-scikit-learn = "^1.0.1"
-numpy = "^1.21.4"
-scipy = "^1.7.3"
+python = ">=3.9,<3.11"
+scikit-learn = "==1.0"
+numpy = "==1.20"
+scipy = "==1.6"
 
 [tool.poetry.dev-dependencies]
 coveralls = "^3.3.1"
-pytest = "^6.2.5"
+pytest = "^7.1"
 pytest-cov = "^3.0.0"
+prospector = {extras = ["with_mypy", "with_bandit"], version = "^1.7.7"}
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=1.0.8"]
 build-backend = "poetry.core.masonry.api"
