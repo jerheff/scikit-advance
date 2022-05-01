@@ -30,6 +30,10 @@ pytest = "^7.1"
 pytest-cov = "^3.0.0"
 prospector = {extras = ["with_mypy", "with_bandit"], version = "^1.7.7"}
 
+[tool.black]
+target-version = ['py39']
+required-version = '22'
+
 [build-system]
 requires = ["poetry-core>=1.0.8"]
 build-backend = "poetry.core.masonry.api"
