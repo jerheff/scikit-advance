@@ -1,0 +1,7 @@
+mypy:
+  run: true
+  options:
+    strict: true
+
+bandit:
+  run: true

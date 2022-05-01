@@ -29,11 +29,14 @@ develop: env venv
 lock:
 	poetry lock --no-update
 
+lint:
+	poetry run prospector
+
 test:
 	poetry run pytest --cov=skadvance --cov-report=term-missing:skip-covered --cov-report=xml:coverage.xml
 
 black:
-	black .
+	poetry run black .
 
 precommit:
 	pre-commit run
