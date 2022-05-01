@@ -21,7 +21,7 @@ packages = [
 [tool.poetry.dependencies]
 python = ">=3.9,<3.11"
 scikit-learn = "^1.0"
-numpy = "^1.20"
+numpy = "^1.21"
 scipy = "^1.6"
 
 [tool.poetry.dev-dependencies]
