@@ -16,9 +16,13 @@ ifeq (, $(shell which black))
 	pipx install black
 endif
 
+PYENV := $(shell command -v pyenv 2> /dev/null)
+
 venv:
+ifdef PYENV
 	pyenv local 3.9.12
 	poetry env use $(shell pyenv which python)
+endif
 
 install: env venv
 	PIP_USER=false poetry install --remove-untracked --no-dev
